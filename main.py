@@ -41,7 +41,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + absolute_db_path
 # cretae the db
 db = SQLAlchemy(app)
 # setting the secret key for CSRF
-app.secret_key = "MySecretKeyIsNothing.."
+app.secret_key = os.environ.get("MY_SECRET_KEY")
 bcrypt = Bcrypt(app)
 
 login_manager = LoginManager()
@@ -254,4 +254,4 @@ def load_user(user_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
