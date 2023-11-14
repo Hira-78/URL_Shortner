@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortened URLs</title>
+<style>
+        body {
+        background: rgb(14,22,44);
+background: linear-gradient(0deg, rgba(14,22,44,1) 0%, rgba(0,0,0,1) 70%, rgba(64,63,63,1) 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+    color: black;
+    border-radius: 6px;
+    background-color: rgb(102, 102, 102);
+    margin: 20px;
+    font-family: Stencil Std, fantasy;
+    padding: 20px;
+}
+
+h1:hover {
+    color: rgb(217, 217, 217);
+    background-color: black;
+    cursor: pointer;
+}
+       input[type="url"]{
+        background-color: rgb(235, 247, 249);
+            width: 100%;
+            padding: 15px;
+            margin: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+               button {
+            background-color: ForestGreen;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px
+        }
+
+        button:hover {
+                background-color: #4caf50;
+        }
+
+
+   .container {
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px;
+    justify-content: center;
+}
+
+    form{
+   padding: 10px;
+   margin:5px;
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:center;
+    }
+
+    .my_button{
+      padding: 10px;
+   margin:5px;
+    }
+.button {
+            background-color: rgb(13, 64, 115);
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+                 background-color: rgb(57, 106, 147);
+                 text-decoration: none;
+        }
+    .my_image{
+    width:220px;
+    height:250px;
+    margin:10px;
+    padding: 5px;
+    border: 2px dashed white;
+    }
+    img{
+
+    width: 220px;
+    height: 190px;
+}
+    .whole_block{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    }
+      a {
+            background-color: ForestGreen;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+                background-color: #4caf50;
+                 text-decoration: none;
+        }
+    h3{
+    color: rgb(102, 102, 102);
+    text-align: center;
+
+    }
+          .logOut_button {
+        position: fixed;
+              top: 20px;
+            right: 30px;
+            padding: 10px 30px;
+            background-color: rgb(13, 64, 115);
+            color: #ffffff;
+            border: none;
+
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+
+            text-decoration: none;
+        }
+
+        .logOut_button:hover {
+                 background-color:#4caf50;
+                 text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>QR Code</h1>
+    <div class="whole_block">
+        <div class="container">
+            <div class="my_form">
+                <form action="#" method="POST">
+                    <input type="url" id="linkField" name="provided_link" placeholder="Enter Your Link Here" required>
+                    <div class="my_button">
+                        <button type="button" onclick="showQRCode()">Create QR Code</button>
+
+                    </div>
+                    <a href="{{url_for('index_page')}}"  class="button">Go Back</a>
+                </form>
+            </div>
+        </div>
+        <div class="my_image">
+            <h3>Your QR Code Here</h3>
+
+
+<img src="" id="qrCodeImage" alt="QR Code" style="color:white"/>
+
+
+
+    </div>
+ <a href="{{ url_for('log_out') }}" class="logOut_button">Log Out</a>
+    </div>
+</body>
+<script>
+    function showQRCode() {
+        var qrCodeImage = document.getElementById("qrCodeImage");
+        qrCodeImage.src = "{{ qr_code_image }}";
+    }
+</script>
+
+</html>

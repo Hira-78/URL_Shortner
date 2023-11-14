@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign_Up</title>
+   <style>
+     body {
+    font-family: Arial, sans-serif;
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(17,5,62,1) 0%, rgba(65,0,92,1) 0%, rgba(37,35,102,1) 0%, rgba(56,20,52,1) 4%, rgba(5,6,11,1) 12%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 83%, rgba(49,5,45,1) 95%, rgba(27,50,87,1) 98%, rgba(92,70,91,1) 100%, rgba(17,17,18,1) 100%, rgba(79,0,89,1) 100%, rgba(25,21,71,1) 100%, rgba(86,5,97,0.726015406162465) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: black;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+  form {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 76%;
+        }
+.dashed{
+border: 3px dotted #11053e;
+}
+
+     .input_field{
+        background-color: rgb(235, 247, 249);
+            width: 100%;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+.button {
+    background-color: ForestGreen;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    margin:10px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+	h2 {
+		    text-align:center;
+            padding:15px;
+			font-size: 60px;
+			font-family: Arial, Helvetica, sans-serif;
+			background: linear-gradient( red , blue);
+			-webkit-text-fill-color: transparent;
+			-webkit-background-clip: text;
+		}
+        .go_back_button {
+            background-color: rgb(13, 64, 115);
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px;
+            text-decoration: none;
+        }
+
+        .go_back_button:hover {
+                 background-color: rgb(57, 106, 147);
+                 text-decoration: none;
+        }
+   </style>
+
+</head>
+<body>
+<div class="container">
+<h2>Sign Up</h2>
+    <div class="dashed">
+    <div class="container">
+
+         <form method="POST" action="{{url_for('signup_page')}}">
+        {{form.hidden_tag()}}
+        {{form.username}}
+        {{form.password}}
+        {{form.submit}}
+    </form><a href="{{url_for('home_page')}}"  class="go_back_button">Go Back</a></div>
+    </div></div>
+
+</body>
+</html>

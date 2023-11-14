@@ -1,0 +1,252 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "URL Shortener API",
+    "description": "API for shortening URLs",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Hira",
+      "email": "hirafareed.8888@gmail.com"
+    }
+  },
+ "paths": {
+     "/": {
+         "get": {
+             "summary": "Home Page",
+             "description": "Returns the home page of the URL Shortener Website.",
+             "responses": {
+                 "200": {
+                     "description": "Successful operation",
+                     "content": {
+                         "text/html": {
+                             "example": "<!DOCTYPE html>\n<html>\n<head><title>URL Shortener</title></head>\n<body>\n<h1>Welcome to the URL Shortener!</h1>\n<p>This is the home page of the URL Shortener.</p>\n</body>\n</html>"
+                         }
+                     }
+                 }
+             }
+         }
+     },
+     "/SignUp": {
+         "post": {
+             "summary": "User Sign Up",
+             "description": "Registers a new user by providing a username and password.",
+             "consumes": [
+                 "application/form"
+             ],
+             "produces": [
+                 "application/json"
+             ],
+             "parameters": [
+                 {
+                     "name": "username",
+                     "in": "formData",
+                     "description": "User's username (4-25 characters)",
+                     "required": true,
+                     "type": "string",
+                     "maxLength": 25,
+                     "minLength": 4
+                 },
+                 {
+                     "name": "password",
+                     "in": "formData",
+                     "description": "User's password (5-20 characters)",
+                     "required": true,
+                     "type": "string",
+                     "maxLength": 20,
+                     "minLength": 5
+                 }
+             ],
+             "responses": {
+                 "201": {
+                     "description": "User successfully registered"
+                 },
+                 "400": {
+                     "description": "Invalid request data"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         }
+     },
+     "/Login": {
+         "post": {
+             "summary": "User Login",
+             "description": "Authenticates a user by verifying username and password.",
+             "consumes": [
+                 "application/form"
+             ],
+             "produces": [
+                 "text/html"
+             ],
+             "parameters": [
+                 {
+                     "name": "username",
+                     "in": "formData",
+                     "description": "User's username",
+                     "required": true,
+                     "type": "string"
+                 },
+                 {
+                     "name": "password",
+                     "in": "formData",
+                     "description": "User's password",
+                     "required": true,
+                     "type": "string"
+                 }
+             ],
+             "responses": {
+                 "200": {
+                     "description": "User successfully authenticated"
+                 },
+                 "401": {
+                     "description": "Unauthorized - Invalid credentials"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         }
+     },
+     "/index": {
+         "get": {
+             "summary": "Show Create Link Form",
+             "description": "Renders the page where the user can input a long URL and custom words.",
+             "produces": [
+                 "text/html"
+             ],
+             "responses": {
+                 "200": {
+                     "description": "Create Link Form successfully rendered"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         },
+         "post": {
+             "summary": "Generate Short URL",
+             "description": "Processes the form submission and generates a short URL.",
+             "consumes": [
+                 "application/form"
+             ],
+             "produces": [
+                 "text/html"
+             ],
+             "parameters": [
+                 {
+                     "name": "input_link",
+                     "in": "formData",
+                     "description": "Long URL",
+                     "required": true,
+                     "type": "string"
+                 },
+                 {
+                     "name": "customize_link",
+                     "in": "formData",
+                     "description": "Custom words for short URL (optional)",
+                     "required": false,
+                     "type": "string"
+                 }
+             ],
+             "responses": {
+                 "200": {
+                     "description": "Short URL successfully generated"
+                 },
+                 "400": {
+                     "description": "Invalid request data"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         }
+     },
+     "/qr_code": {
+         "get": {
+             "summary": "Show QR Code Form",
+             "description": "Renders the page where the user can input a long URL to generate a QR code.",
+             "produces": [
+                 "text/html"
+             ],
+             "responses": {
+                 "200": {
+                     "description": "QR Code Form successfully rendered"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         },
+         "post": {
+             "summary": "Generate QR Code",
+             "description": "Processes the form submission and generates a QR code for the provided long URL.",
+             "consumes": [
+                 "application/form"
+             ],
+             "produces": [
+                 "text/html"
+             ],
+             "parameters": [
+                 {
+                     "name": "input_link",
+                     "in": "formData",
+                     "description": "Long URL",
+                     "required": true,
+                     "type": "string"
+                 }
+             ],
+             "responses": {
+                 "200": {
+                     "description": "QR Code successfully generated"
+                 },
+                 "400": {
+                     "description": "Invalid request data"
+                 },
+                 "500": {
+                     "description": "Internal Server Error"
+                 }
+             }
+         }
+     }
+ },
+
+
+  "definitions": {
+    "User": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "format": "int64"
+            },
+            "username": {
+                "type": "string"
+            },
+            "password": {
+                "type": "string"
+            }
+        }
+    }
+}
+,
+    "Data": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "format": "int64"
+            },
+            "long_url": {
+                "type": "string"
+            },
+            "short_url": {
+                "type": "string"
+            },
+            "QR_Code": {
+                "type": "string",
+                "format": "byte"
+            }
+        }
+    }
+}

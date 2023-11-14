@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortened URLs</title>
+<style>
+        body {
+            background: rgb(14,22,44);
+background: linear-gradient(0deg, rgba(14,22,44,1) 0%, rgba(0,0,0,1) 70%, rgba(64,63,63,1) 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+        h1 {
+    color: black;
+    border-radius: 6px;
+    background-color: rgb(102, 102, 102);
+    margin: 20px;
+    font-family: Stencil Std, fantasy;
+    padding: 20px;
+}
+
+h1:hover {
+    color: rgb(217, 217, 217);
+    background-color: black;
+    cursor: pointer;
+}
+        p {
+            padding:5px;
+            margin: 10px;
+            color: rgb(25, 128, 230);
+            font-size: large;
+
+        }
+
+      a {
+            background-color: ForestGreen;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+                background-color: #4caf50;
+                 text-decoration: none;
+        }
+      .button {
+            background-color: rgb(13, 64, 115);
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+                 background-color: rgb(57, 106, 147);
+                 text-decoration: none;
+        }
+.short-url-container {
+    display: flex;
+    align-items: center;
+     border: 2px solid rgb(89, 89, 89);
+    border-radius: 6px;
+    margin:10px;
+}
+        .option {
+    padding: 2px;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 7px;
+    background-color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: rgb(89, 89, 89);
+    transition: background-color 0.3s ease;
+}
+
+.option:hover {
+    cursor: pointer;
+    background-color: LightGray;
+    color: Black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+
+}
+        .option a{
+         text-decoration:none;
+         padding : 10px;
+         color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Shortened URL</h1>
+       <div class="short-url-container">
+    <p>http://127.0.0.1:5000/{{ short_url }}</p>
+    <span class="option" onclick="copyToClipboard()">
+        <svg xmlns="http://www.w3.org/2000/svg" length="20" width="20" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+        </svg>
+        <span>Copy</span>
+    </span>
+</div>
+
+
+    <a href="{{ long_url }}" target="_blank">Redirect to Original URL</a>
+<a href="{{url_for('index_page')}}" class="button">Go Back</a>
+<script>
+        function copyToClipboard() {
+            const shortenedUrl = "http://127.0.0.1:5000/{{ short_url }}";
+            navigator.clipboard.writeText(shortenedUrl).then(function() {
+                alert("Shortened URL copied to clipboard!");
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>

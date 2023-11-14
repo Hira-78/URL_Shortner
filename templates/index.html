@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: rgb(14,22,44);
+background: linear-gradient(0deg, rgba(14,22,44,1) 0%, rgba(0,0,0,1) 70%, rgba(64,63,63,1) 100%);
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+    color: black;
+    border-radius: 6px;
+    background-color: rgb(102, 102, 102);
+    margin: 10px;
+    font-family: Stencil Std, fantasy;
+    padding: 20px;
+}
+
+h1:hover {
+ color: rgb(217, 217, 217);
+ background-color: black;
+    cursor: pointer;
+}
+
+        form {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 76%;
+        }
+
+        input[type="text"]{
+            width: 30%;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: rgb(235, 247, 249);
+        }
+        input[type="url"]{
+        background-color: rgb(235, 247, 249);
+            width: 30%;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+
+            background-color: ForestGreen;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px 10px
+        }
+
+        button:hover {
+                background-color: #4caf50;
+        }
+
+        #nav {
+        display: inline-block;
+        padding: 20px;
+        margin: 10px;
+        text-decoration: none;
+        }
+        .option {
+    border: 2px solid rgb(163, 194, 219)s;
+    border-radius: 6px;
+
+    padding: 10px;
+    margin: 5px;
+    font-weight: bold;
+    background-color: rgb(13, 64, 115);
+
+    transition: background-color 0.3s ease;
+}
+
+.option:focus,
+.option:active {
+    outline: none;
+    background-color: SteelBlue;
+
+}
+.option:hover {
+    cursor: pointer;
+    background-color: rgb(57, 106, 147);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+
+}
+        .option a{
+         text-decoration:none;
+         padding : 10px;
+         color: white;
+        }
+         button{
+     background-color: ForestGreen;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            align-item: right;
+            text-decoration: none;
+        }
+
+        button:hover {
+                  background-color: #4caf50;
+                 text-decoration: none;
+
+    }
+        .logOut_button {
+        position: fixed;
+            top: 20px;
+            right: 30px;
+            padding: 10px 30px;
+            background-color: rgb(13, 64, 115);
+            color: #ffffff;
+            border: none;
+
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+
+            text-decoration: none;
+        }
+
+        .logOut_button:hover {
+                 background-color:#4caf50;
+                 text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>URL Shortener</h1>
+
+<nav id="nav">
+    <span class="option"><a href="#">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+        </svg>
+        <span>Short_URL</span>
+    </a></span>
+
+    <span class="option"><a href="qr_code.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none"
+             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"/>
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z"/>
+        </svg>
+        <span>QR-Code</span>
+    </a></span>
+</nav>
+<form action="/index" method="POST">
+    <!-- Input fields -->
+    <input type="url" id="linkField" placeholder="Enter Link" name="input_link" required>
+    <input type="text" pattern="[a-zA-Z]+" id="customWords" placeholder="Customize Words (3 alphabets)"
+           name="customize_link">
+
+    <!-- Create Link button -->
+    <button name="create_link" action="#">Create Link</button>
+   <a href="{{ url_for('log_out') }}" class="logOut_button">Log Out</a>
+
+
+
+</form>
+
+</body>
+
+</html>
